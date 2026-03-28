@@ -61,13 +61,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "input_csv",
         nargs="?",
-        default="cars.csv",
+        default="cars_split.csv",
         help="Path to the input CSV file.",
     )
     parser.add_argument(
         "output_csv",
         nargs="?",
-        default="cars_split.csv",
+        default="cars_split_out.csv",
         help="Path to the output CSV file.",
     )
     return parser.parse_args()
