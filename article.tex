@@ -1,13 +1,18 @@
-\documentclass{article}
+\documentclass[a4paper, twocolumn]{article}
 \usepackage{graphicx} % Required for inserting images
 
-\title{mandatory1 - aai}
-\author{Mads Fjeldberg, Magnus Svensson}
+\title{Predicting Fuel Efficiency of Cars using Linear and Logistic Regression}
+\author{M. Fjeldberg, M. Svensson}
 \date{March 2026}
 
 \begin{document}
 
 \maketitle
+
+\begin{abstract}
+In this project we explore the use of linear regression to predict the miles per gallon (MPG)
+of cars based on their physical attributes. We also investigate whether regularisation techniques (Ridge and Lasso regression) can improve the model's performance. We evaluate the models using common regression metrics and compare the results to determine the effectiveness of regularisation on this dataset.
+\end{abstract}
 
 \section{Introduction}
 
@@ -18,5 +23,25 @@ The goal is to answer a straightforward question: given a car's physical specifi
 To do this we train a linear regression model and then try to improve it by fine-tuning with regularisation techniques (Ridge and Lasso regression).
 
 We evaluate the models using common regression metrics such as Mean Absolute Error (MAE), Root Mean Square Error (RMSE) and R², and compare the results to see whether regularisation helps on this particular dataset.
+
+\section{Method}
+
+The dataset contains 398 entries, but 6 rows have missing values for horsepower. We drop these, leaving 392 usable rows. We select seven numeric features as input: cylinders, displacement, horsepower, weight, acceleration, model year and origin. The target variable is MPG.
+
+We split the data into 80\% training and 20\% test sets and standardise all features using \texttt{StandardScaler} so that each feature has zero mean and unit variance. This ensures that no single feature dominates the model due to its scale.
+
+We first train a baseline ordinary least-squares (OLS) linear regression model. Linear regression fits a set of weights to the features that minimises the sum of squared errors between predicted and actual MPG values.
+
+To fine-tune, we try two regularised variants:
+\begin{itemize}
+    \item \textbf{Ridge regression} adds an L2 penalty that shrinks coefficients toward zero, reducing overfitting.
+    \item \textbf{Lasso regression} adds an L1 penalty that can shrink some coefficients all the way to zero, effectively performing feature selection.
+\end{itemize}
+
+For both Ridge and Lasso we test five alpha values (0.01, 0.1, 1.0, 10.0, 100.0) using 5-fold cross-validation on the training set and pick the alpha with the highest mean R². The best model is then evaluated on the held-out test set.
+
+\section{Results}
+
+\section{Conclusion}
 
 \end{document}
