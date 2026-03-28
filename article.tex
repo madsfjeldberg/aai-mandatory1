@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{mandatory1 - aai}
+\author{Mads Fjeldberg, Magnus Svensson}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+In this project we look at how well a simple machine learning model can predict the fuel efficiency of a car.
+We use the cars_split.csv dataset, which contains information about 398 cars from the 1970s and 1980s, including attributes like weight, horsepower, number of cylinders and model year.
+
+The goal is to answer a straightforward question: given a car's physical specifications, can we predict how many miles per gallon it gets?
+To do this we train a linear regression model and then try to improve it by fine-tuning with regularisation techniques (Ridge and Lasso regression).
+
+We evaluate the models using common regression metrics such as Mean Absolute Error (MAE), Root Mean Square Error (RMSE) and R², and compare the results to see whether regularisation helps on this particular dataset.
+
+\end{document}
